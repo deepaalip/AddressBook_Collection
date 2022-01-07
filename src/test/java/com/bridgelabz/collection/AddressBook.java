@@ -137,5 +137,11 @@ public class AddressBook {
              			}
              		}
                  }
-                 
+                 public void addMultipleContact() {
+             		System.out.println("Enter Number of Multiple Contacts to be added");
+             		int multipleContact = scanner.nextInt();
+             		for (int i = 1; i <= multipleContact; i++) {
+             			addContact();
+             		}
+                 }
 }
