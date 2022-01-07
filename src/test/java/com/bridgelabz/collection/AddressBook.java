@@ -43,4 +43,80 @@ public class AddressBook {
     		System.out.println(person.toString());
     	}
     }
+    
+    public void editContact() {
+    	System.out.println("Enter firstName For update contact");
+    	String Name = scanner.next();
+    	for(Contact person : contactBook) {
+    		if(Name.equals(person.firstName)) {
+    			System.out.println("Select Option to Update :" + "1. FirstName " + "2. LastName " + "3. Address " + "4.City " + "5.State "
+						 + "6. ZipCode " + "7. PhoneNumber "+ "8. Email ");
+    			int option = scanner.nextInt();
+    			switch(option) {
+    			case 1:
+					System.out.println("Enter new FirstName");
+					String newFirstName = scanner.next();
+					person.setFirstName(newFirstName);
+					System.out.println("Name Updated");
+					break;
+
+				case 2:
+					System.out.println("Enter new Last Name");
+					String newLastName = scanner.next();
+					person.setLastName(newLastName);
+					System.out.println("Name Updated");
+					break;
+
+				case 3:
+					System.out.println("Enter New Address");
+					String newAddress = scanner.next();
+					person.setAddress(newAddress);
+					System.out.println("Address Updated");
+					break;
+
+				case 4:
+					System.out.println("Enter new State name");
+					String newState = scanner.next();
+					person.setState(newState);
+					System.out.println("State location updated ");
+					break;
+
+				case 5:
+					System.out.println("Enter Updating city");
+					String newCity = scanner.next();
+					person.setCity(newCity);
+					System.out.println("City Location Updated");
+					break;
+
+				case 6:
+					System.out.println("Enter new ZipCode");
+					int newzip = scanner.nextInt();
+					person.setZipCode(newzip);
+					System.out.println("ZipCode Updated");
+					break;
+
+				case 7:
+					System.out.println("Update PhoneNumber");
+					int newphone = scanner.nextInt();
+					person.setPhoneNumber(newphone);
+					System.out.println("PhoneNumber Update");
+					break;
+
+				case 8:
+					System.out.println("Update Email");
+					String newMail = scanner.next();
+					person.setEmail(newMail);
+					System.out.println("Mail updated");
+					break;
+
+				default:
+					System.out.println("Choose a number for Credential to 1-8");
+				}
+			} else {
+				continue;
+			}
+    			
+    		
+    	}
+    }
 }
