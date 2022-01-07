@@ -15,11 +15,12 @@ public class AddressBookMain {
 
 			while (enterExit != 2) {
 				System.out.println("Choose which operation you want to perform from below list = ");
-				System.out.println("1.Add Contact.");
+				System.out.println("1.Add Contact");
 				System.out.println("2.Edit Contact");
 				System.out.println("3.Delete Contact");
-				System.out.println("4.Display Address Book.");
-				System.out.println("5.Exit from the Application");
+				System.out.println("4.Add New AddressBook in List");
+				System.out.println("5.Display Address Book");
+				System.out.println("6.Exit from the Application");
 
 				System.out.println("Enter your choice ");
 				int userChoice = scanner.nextInt();
@@ -35,12 +36,15 @@ public class AddressBookMain {
 					addressBook.deleteContact();
 					break;
 				case 4:
-					addressBook.displayContact();
+					addressBook.NewAddressBook();
 					break;
+				case 5:
+					addressBook.DisplayAddressBook();
+					break;	
 				default:
 					System.out.println("Press valid button To choose option ");
 				}
-				if (userChoice == 5) {
+				if (userChoice == 6) {
 					System.out.println("You are Exited from Addressbook");
 					break;
 				}
