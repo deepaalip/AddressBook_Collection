@@ -40,11 +40,12 @@ public class AddressBook {
  		System.out.print("Enter E-mail = ");
  	    String Email = scanner.next();
 	
-        Contact contact = new Contact (FirstName , LastName , Address , City , State , ZipCode , PhoneNumber , Email);
+        Contact contacts = new Contact (FirstName , LastName , Address , City , State , ZipCode , PhoneNumber , Email);
  		
+        if (CheckDuplicateContact(Bookname, FirstName)) {
         for (AddressBookList Adbookname : listAddressBookName) {
 			if (Adbookname.AddressBookName.contains(Bookname)) {
-				Adbookname.contact.add(contact);
+				Adbookname.contact.add(contacts);
 				for (Contact Contactname : Adbookname.contact) {
 					System.out.println(Contactname.toString());
 				}
@@ -52,17 +53,39 @@ public class AddressBook {
         }		
  		
  		System.out.println("Contact added Successfully.");
+	}else {
+		System.out.println("\n --> This Conatct with Name -> " + FirstName
+				+ " <- Already Exist, please Input Another Name \n ");
+		return;
 	}
-	   return;
+	  
    } 
-    
+}	   
    public void addMultipleContact() {
 		System.out.println("Enter Number of Multiple Contacts to be added");
 		int multipleContact = scanner.nextInt();
 		for (int i = 1; i <= multipleContact; i++) {
 			addContact();
 		}
-    }
+   }
+   public boolean CheckDuplicateContact(String Bookname, String firstName) {
+		for (AddressBookList Adbookname : listAddressBookName) {
+			if (Bookname.equals(Adbookname.AddressBookName)) {
+				for (Contact User : Adbookname.contact) {
+					if (firstName.equals(User.firstName)) {
+						return false;
+					} else {
+						continue;
+					}
+				}
+			} else {
+				continue;
+			}
+		}
+		return true;
+	}
+    
+  
     public void editContact() {
     	System.out.println("Enter firstName to edit contact");
     	String Name = scanner.next();
