@@ -45,7 +45,7 @@ public class AddressBook {
     }
     
     public void editContact() {
-    	System.out.println("Enter firstName For update contact");
+    	System.out.println("Enter firstName to edit contact");
     	String Name = scanner.next();
     	for(Contact person : contactBook) {
     		if(Name.equals(person.firstName)) {
@@ -75,17 +75,18 @@ public class AddressBook {
 					break;
 
 				case 4:
-					System.out.println("Enter new State name");
-					String newState = scanner.next();
-					person.setState(newState);
-					System.out.println("State location updated ");
-					break;
-
-				case 5:
 					System.out.println("Enter Updating city");
 					String newCity = scanner.next();
 					person.setCity(newCity);
 					System.out.println("City Location Updated");
+					break;
+					
+
+				case 5:
+					System.out.println("Enter new State name");
+					String newState = scanner.next();
+					person.setState(newState);
+					System.out.println("State location updated ");
 					break;
 
 				case 6:
@@ -119,4 +120,22 @@ public class AddressBook {
     		
     	}
     }
+                 public void deleteContact() {
+                	 System.out.println("Enter  linked Email to Delete the Contact");
+             		String DeleteContact = scanner.next();
+
+             		for (int i = 0; i < contactBook.size(); i++) {
+             			String CheckingMail = contactBook.get(i).getEmail();
+
+             			if (DeleteContact.equals(CheckingMail)) {
+             				contactBook.remove(i);
+             				System.out.println("Contact Deleted Suucessfully");
+             				break;
+
+             			} else {
+             				continue;
+             			}
+             		}
+                 }
+                 
 }

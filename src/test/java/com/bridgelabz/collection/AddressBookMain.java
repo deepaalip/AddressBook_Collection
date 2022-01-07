@@ -1,6 +1,9 @@
 package com.bridgelabz.collection;
 
+
+
 public class AddressBookMain {
+	 
   public static void main (String[] args)
   {
 	  System.out.println("Welcome to Address Book Program");
@@ -8,5 +11,8 @@ public class AddressBookMain {
 	  addressBook.addContact();
 	  addressBook.displayContact();
 	  addressBook.editContact();
+	  addressBook.deleteContact();
+	  
+	  
   }
 }
