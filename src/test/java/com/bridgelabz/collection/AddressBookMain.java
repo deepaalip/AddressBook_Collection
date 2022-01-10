@@ -56,15 +56,21 @@ public class AddressBookMain {
 					addressBook.viewByState();
 					break;
 				case 9:
-					addressBook.ContactSorting();;
-					break;	
+					addressBook.contactSorting();
+					break;
 				case 10:
+					addressBook.contactSortingByCity();
+					break;	
+				case 11:
+					addressBook.contactSortingByState();
+					break;	
+				case 12:
 					addressBook.DisplayAddressBook();
 					break;	
 				default:
 					System.out.println("Press valid button To choose option ");
 				}
-				if (userChoice == 11) {
+				if (userChoice == 13) {
 					System.out.println("You are Exited from Addressbook");
 					break;
 				}

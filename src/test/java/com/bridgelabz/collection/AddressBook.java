@@ -298,10 +298,25 @@ public class AddressBook {
                  } 
              	   }
                 
-                public void ContactSorting() {
+                public void contactSorting() {
             	
             		AddressBook.stream()
             		.sorted((contact1,contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
+            		.forEach(contact -> System.out.println(contact));
+            				
+                }
+                public void contactSortingByCity() {
+                	
+            		AddressBook.stream()
+            		.sorted((contact1,contact2) -> contact1.getCity().compareTo(contact2.getCity()))
+            		.forEach(contact -> System.out.println(contact));
+            				
+                }
+                
+                 public void contactSortingByState() {
+                	
+            		AddressBook.stream()
+            		.sorted((contact1,contact2) -> contact1.getState().compareTo(contact2.getState()))
             		.forEach(contact -> System.out.println(contact));
             				
                 }
