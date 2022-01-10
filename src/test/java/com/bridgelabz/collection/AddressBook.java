@@ -1,7 +1,9 @@
 package com.bridgelabz.collection;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBook {
    static Scanner scanner = new Scanner(System.in);
@@ -198,8 +200,25 @@ public class AddressBook {
                  }
              }
        }    		
-                 
-                 
+                 public void SearchPersoninContact() {
+             		System.out.println("Input the name of City And State to search person in the List ");
+             		System.out.println(" Enter the City Name - ");
+             		String City = scanner.next();
+             		System.out.println(" Now Enter the State Name - ");
+             		String State = scanner.next();
+             		for (AddressBookList Adbookname : listAddressBookName) {
+             			for (Contact User : Adbookname.contact) {
+             				if (City.equals(User.city)) {
+            					if (State.equals(User.state)) {
+            						System.out.println("\n -> The Contact you are Searching by City - "+City+" &  State - "+State+" Is - "+User.firstName+". \n");
+            					} else {
+            						continue;
+            					}
+            				}
+            			}
+             		}
+             }
+                
                  public boolean Uniquename(String AddressBookName) {
              		if (listAddressBookName.isEmpty()) {
              			return true;

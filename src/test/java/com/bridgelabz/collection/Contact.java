@@ -4,8 +4,8 @@ public class Contact {
 	String firstName;
 	String lastName;
 	String address;
-	String city;
-	String state;
+	public static String city;
+	public static String state;
 	int zipCode;
 	long phoneNumber;
 	String email;
@@ -15,8 +15,8 @@ public class Contact {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
-		this.city = city;
-		this.state = state;
+		Contact.city = city;
+		Contact.state = state;
 		this.zipCode = zipCode;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
