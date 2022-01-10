@@ -298,8 +298,13 @@ public class AddressBook {
                  } 
              	   }
                 
-                
-
+                public void ContactSorting() {
+            	
+            		AddressBook.stream()
+            		.sorted((contact1,contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
+            		.forEach(contact -> System.out.println(contact));
+            				
+                }
              	public void DisplayAddressBook() {
              		for (AddressBookList DisplayAddressBook : listAddressBookName) {
              			System.out.println(DisplayAddressBook);
