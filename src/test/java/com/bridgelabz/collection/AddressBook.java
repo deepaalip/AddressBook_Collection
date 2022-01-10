@@ -1,16 +1,21 @@
 package com.bridgelabz.collection;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class AddressBook {
    static Scanner scanner = new Scanner(System.in);
    static ArrayList<AddressBookList> listAddressBookName = new ArrayList<>();
+   static ArrayList<Contact> AddressBook = new ArrayList<Contact>();
    
+    
    public void addContact() {
-	   if (listAddressBookName.isEmpty()) {
+	   if (listAddressBookName.isEmpty()) { 
 			System.out.println("Add AddressBook :- ");
 			return;
 	   }
@@ -50,6 +55,7 @@ public class AddressBook {
 				Adbookname.contact.add(contacts);
 				for (Contact Contactname : Adbookname.contact) {
 					System.out.println(Contactname.toString());
+					AddressBook.add(contacts);
 				}
 			}
         }		
@@ -199,7 +205,34 @@ public class AddressBook {
                 	 continue;
                  }
              }
-       }    		
+       }    	
+                 public boolean Uniquename(String AddressBookName) {
+              		if (listAddressBookName.isEmpty()) {
+              			return true;
+              		}
+
+              		for (int i = 0; i < listAddressBookName.size(); i++) {
+              			String getName = listAddressBookName.get(i).AddressBookName;
+              			if (getName.equals(AddressBookName)) {
+              				return false;
+              			}
+              		}
+              		return true;
+              	}
+
+              	public void NewAddressBook() {
+              		System.out.println(" Input Name of AddressBook - ");
+              		String AddressBookName = scanner.next();
+
+              		if (!Uniquename(AddressBookName)) {
+              			System.out.println("The AddressBook with this Name Already Exist");
+              			return;
+              		}
+              		AddressBookList AddressBookObj = new AddressBookList(AddressBookName);
+              		listAddressBookName.add(AddressBookObj);
+
+              		System.out.println("\n New Address Book Name is added to list.\n");
+              	}
                  public void SearchPersoninContact() {
              		System.out.println("Input the name of City And State to search person in the List ");
              		System.out.println(" Enter the City Name - ");
@@ -219,33 +252,31 @@ public class AddressBook {
              		}
              }
                 
-                 public boolean Uniquename(String AddressBookName) {
-             		if (listAddressBookName.isEmpty()) {
-             			return true;
-             		}
-
-             		for (int i = 0; i < listAddressBookName.size(); i++) {
-             			String getName = listAddressBookName.get(i).AddressBookName;
-             			if (getName.equals(AddressBookName)) {
-             				return false;
-             			}
-             		}
-             		return true;
-             	}
-
-             	public void NewAddressBook() {
-             		System.out.println(" Input Name of AddressBook - ");
-             		String AddressBookName = scanner.next();
-
-             		if (!Uniquename(AddressBookName)) {
-             			System.out.println("The AddressBook with this Name Already Exist");
-             			return;
-             		}
-             		AddressBookList AddressBookObj = new AddressBookList(AddressBookName);
-             		listAddressBookName.add(AddressBookObj);
-
-             		System.out.println("\n New Address Book Name is added to list.\n");
-             	}
+                 
+                 
+              public void viewByCity() {
+            	 
+            	  System.out.println("enter city:");
+            	  String cityName = scanner.next();
+            	  
+                  Set<Contact> citydetails = AddressBook.stream().filter(c->c.city .equals(cityName)).collect(Collectors.toSet());
+                  for(Contact con :  citydetails) { 
+                      System.out.println(con.city+" "+con.firstName+" "); 
+                   } 
+            	
+            	
+                }
+              
+                public void viewByState() {
+                System.out.println("enter state:");
+              	String stateName = scanner.next();
+              	Set<Contact> statedetails = AddressBook.stream().filter(c->c.state .equals(stateName)).collect(Collectors.toSet());
+                for(Contact con :  statedetails) { 
+                    System.out.println(con.state+" "+con.firstName+" "); 
+                 } 
+             	   }
+                
+                
 
              	public void DisplayAddressBook() {
              		for (AddressBookList DisplayAddressBook : listAddressBookName) {

@@ -19,8 +19,11 @@ public class AddressBookMain {
 				System.out.println("2.Edit Contact");
 				System.out.println("3.Delete Contact");
 				System.out.println("4.Add New AddressBook in List");
-				System.out.println("5.Display Address Book");
-				System.out.println("6.Exit from the Application");
+				System.out.println("5.Search person in contact");
+				System.out.println("6.view contact by city");
+				System.out.println("7.view contact by state");
+				System.out.println("8.Display Address Book");
+				System.out.println("9.Exit from the Application");
 
 				System.out.println("Enter your choice ");
 				int userChoice = scanner.nextInt();
@@ -38,13 +41,21 @@ public class AddressBookMain {
 				case 4:
 					addressBook.NewAddressBook();
 					break;
-				case 5:
+				case 5:	
+					addressBook.SearchPersoninContact();
+				case 6:
+					addressBook.viewByCity();
+					break;
+				case 7:
+					addressBook.viewByState();
+					break;
+				case 8:
 					addressBook.DisplayAddressBook();
 					break;	
 				default:
 					System.out.println("Press valid button To choose option ");
 				}
-				if (userChoice == 6) {
+				if (userChoice == 9) {
 					System.out.println("You are Exited from Addressbook");
 					break;
 				}
