@@ -252,8 +252,30 @@ public class AddressBook {
              		}
              }
                 
-                 
-                 
+                 public void CountbyCityandState() {
+             		System.out.println("Input the name of City And State to Count Persons - ");
+             		System.out.println(" Enter the City Name - ");
+             		String City = scanner.next();
+             		int Countcity = 0;
+             		System.out.println(" Enter the State Name - ");
+             		String State = scanner.next();
+             		int Countstate = 0;
+
+             		for (AddressBookList Adbookname : listAddressBookName) {
+             			for (Contact User : Adbookname.contact) {
+             				if (City.equals(User.city)) {
+             					Countcity++;
+             					if (State.equals(User.state)) {
+             					Countstate++;
+             					}
+             				}
+             			} 
+             			
+             			
+             			System.out.println(City + " "+Countcity+" "+State+" "+Countstate);
+             			
+             		}
+                 }
               public void viewByCity() {
             	 
             	  System.out.println("enter city:");
