@@ -25,7 +25,7 @@ public class AddressBook {
    static ArrayList<AddressBookList> listAddressBookName = new ArrayList<>();
    static ArrayList<Contact> AddressBook = new ArrayList<Contact>();
    File file = new File("C:/Users/DELL/eclipse-workspace/AddressBookCollection/src/main/resource/AddressBookIO.txt");
-   
+   static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
    public void addContact() {
 	   if (listAddressBookName.isEmpty()) { 
@@ -311,63 +311,55 @@ public class AddressBook {
                  } 
              	   }
                 
-                public void contactSorting() {
-            	
-            		AddressBook.stream()
-            		.sorted((contact1,contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
-            		.forEach(contact -> System.out.println(contact));
-            				
-                }
-                public void contactSortingByCity() {
-                	
-            		AddressBook.stream()
-            		.sorted((contact1,contact2) -> contact1.getCity().compareTo(contact2.getCity()))
-            		.forEach(contact -> System.out.println(contact));
-            				
-                }
-                
-                 public void contactSortingByState() {
-                	
-            		AddressBook.stream()
-            		.sorted((contact1,contact2) -> contact1.getState().compareTo(contact2.getState()))
-            		.forEach(contact -> System.out.println(contact));
-            				
-                }
-             	
-             	
-                 
-             	
-             	
-             	public void writeTheFile() throws IOException  {
-             		FileWriter fileWriter = new FileWriter("AddressBookIO.txt");
-            		
-            		String Contact = AddressBook.toString();
-            		
-            		for(int i = 0; i < Contact.length(); i++) {
-            			fileWriter.write(Contact.charAt(i));
-            			fileWriter.flush();
+                public AddressBookList findAddressBook() {
+            		if(listAddressBookName.isEmpty()) {
+            			System.out.println("Please create an address book first.");
+            			return null;
             		}
-            		fileWriter.close();
+            		System.out.println("Please enter the name of the address book :- ");
+            		String getAddressBook = scanner.next();
+            		
+            		for (AddressBookList addressBook : listAddressBookName ) {
+            			if(getAddressBook.equals(addressBook.AddressBookName)) {
+            				return addressBook; // returning addressBook if found in the address book list.
+            			}
+            		}
+            		System.out.println("Address Book does not exist.");
+            		return null;
+            	}
+                public void sortByName_City_State_zip() {
+            		
+            		AddressBookList addressBook = findAddressBook();
 
-            		System.out.println("Data Added successfully");
-            	}
-             	
-             	public void readTheFile() throws IOException {
-            		
-            		Path path = Paths.get("AddressBookIO.txt");
-            		if(!Files.exists(path)) {
-            			System.out.println("OOPS! File is not there. Creating file....");
-            			writeTheFile();
+            		System.out.println("Please select any of the below options." + "\n" + "1. To Sort By Name." + "\n"
+            				+ "2. To Sort By City." + "\n" + "3. To Sort By State." + "\n" + "4. To Sort By Zip Code. :- ");
+            		int choice = scanner.nextInt();
+            		switch (choice) {
+            		case 1:
+            			addressBook.contact.stream()
+            					.sorted((contact1, contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
+            					.forEach(contact -> System.out.println(contact));
+            			break;
+            		case 2:
+            			addressBook.contact.stream()
+            					.sorted((contact1, contact2) -> contact1.getCity().compareTo(contact2.getCity()))
+            					.forEach(contact -> System.out.println(contact));
+            			break;
+            		case 3:
+            			addressBook.contact.stream()
+            					.sorted((contact1, contact2) -> contact1.getState().compareTo(contact2.getState()))
+            					.forEach(contact -> System.out.println(contact));
+            			break;
+            		case 4:
+            			addressBook.contact.stream().sorted(
+            					(contact1, contact2) -> Integer.valueOf(contact1.getZipCode()).compareTo(contact2.getZipCode()))
+            					.forEach(contact -> System.out.println(contact));
+            			break;
+            		default:
+            			System.out.println("Please choose valid option.");
             		}
-            		
-            		FileInputStream fileInputStream = new FileInputStream("AddressBookIO.txt");
-            		int i = 0;
-            		while((i = fileInputStream.read()) != -1) {
-            			System.out.print((char)i);
-            		}
-            		fileInputStream.close();
             	}
-            		
+                
             	
 
              	public void displayAddressBook() {
@@ -375,43 +367,6 @@ public class AddressBook {
              			System.out.println(DisplayAddressBook);
              		}
              	}
-             	public void writeContactsIntoCSV() throws IOException {
-
-             		List<String[]> stringsAddressBook = new ArrayList<>();
-
-             		PrintWriter printWriter = new PrintWriter("AddressBookIO.csv");	
-             		
-             		CSVWriter csvWriter = new CSVWriter(printWriter);
-
-             		
-             		listAddressBookName .forEach(addressBook -> addressBook.contact.stream().forEach(ad -> {
-             					stringsAddressBook.add(new String[] { ad.getFirstName(), ad.getLastName(), 
-             					ad.getAddress(), ad.getCity(), ad.getState(),Integer.toString(ad.getZipCode()),
-             					Long.toString(ad.getPhoneNumber()), ad.getEmail() });}));
-             		
-             		csvWriter.writeAll(stringsAddressBook);    
-             		csvWriter.flush();
-             		csvWriter.close();
-             		
-             		System.out.println("Contacts are added to AddressBook.csv file successfully.");
-             	}
              	
 
-             	public void readContactsFromCSV() throws IOException {
-            		Path path = Paths.get("AddressBookIO.csv");
-            		if(!Files.exists(path)) {
-            			System.out.println("OOPS! CSV file is not there. Creating CSV file...");
-            			writeContactsIntoCSV();
-            		}
-            		
-            		BufferedReader bufferedReader = new BufferedReader(new FileReader("AddressBook.csv"));
-            		String line = "";
-            		while ((line = bufferedReader.readLine()) != null) {
-            			String[] contact = line.split(",");
-            			System.out.println("AddressBook [firstName=" + contact[0] + ", lastName=" + contact[1] + ", address="
-            					+ contact[2] + ", cityName=" + contact[3] + ", stateName=" + contact[4] + ", zip=" + contact[5]
-            					+ ", phoneNumber=" + contact[6] + "]");
-            		}
-            	}
-                 
 }

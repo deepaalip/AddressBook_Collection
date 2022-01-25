@@ -3,7 +3,7 @@ package com.bridgelabz.collection;
 import java.util.ArrayList;
 
 public class AddressBookList {
-	String AddressBookName;
+	static String AddressBookName;
 	ArrayList<Contact> contact;
 
 
