@@ -1,0 +1,43 @@
+[
+    {
+      "userInputBookName": "ADDRESS-BOOK-1",
+      "contact": [
+        {
+          "first_Name": "Deepali",
+          "last_Name": "Patill",
+          "address": "sky-tower",
+          "city": "Pune",
+          "state": "MH",
+          "zip_code": 523272,
+          "phone_number": 9998359,
+          "email": "deep@gmail.com"
+        },
+        {
+          "first_Name": "Sita",
+          "last_Name": "Garg",
+          "address": "mumbai",
+          "city": "mumbai",
+          "state": "MH",
+          "zip_code": 400008,
+          "phone_number": 1325674569,
+          "email": "sita@gmail.com"
+        }
+      ]
+    },
+    {
+      "userInputBookName": "ADDRESS-BOOK-2",
+      "contact": [
+        {
+          "first_Name": "Elon",
+          "last_Name": "Musk",
+          "address": "Star-Base",
+          "city": "Texas",
+          "state": "USA",
+          "zip_code": 400009,
+          "phone_number": 1325675844,
+          "email": "elon-musk@gmail.com"
+        }
+      ]
+    }
+  ]
+

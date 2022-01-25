@@ -1,0 +1,10 @@
+[AddressBookList - AddressBookName = PhoneBook  Contacts- [Contact :-  
+ 1.FirstName = Deepali
+ 2.LastName = Patil
+ 3.Address = TilakNagar
+ 4.City = Pune
+ 5.State = Maharashtra 
+ 6.Email = deepali@gmail.com
+ 7.ZipCode = 23456
+ 8.PhoneNumber = 9123456789
+]]
